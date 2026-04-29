@@ -1,4 +1,4 @@
-package com.jee;
+package com.frudoko;
 
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.Context;

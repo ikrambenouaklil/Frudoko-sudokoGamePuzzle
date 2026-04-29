@@ -87,16 +87,16 @@
                     <a th:href="@{/home}" class="btn btn-fruit btn-lg px-5">
                         <img th:src="${apple}" class="fruit-icon--nav"> Retour à l'accueil
                     </a>
-                    <th:block th:if="${session.user != null}">
-                        <a th:href="@{/levels}" class="btn btn-outline-fruit btn-lg px-4">
-                            <img th:src="${game}" class="fruit-icon--nav"> Jouer
-                        </a>
-                    </th:block>
-                    <th:block th:if="${session.user == null}">
-                        <a th:href="@{/scoreboard}" class="btn btn-outline-fruit btn-lg px-4">
-                            <img th:src="${trophy}" class="fruit-icon--nav"> Classement
-                        </a>
-                    </th:block>
+<!--                    <th:block th:if="${session.user != null}">-->
+<!--                        <a th:href="@{/levels}" class="btn btn-outline-fruit btn-lg px-4">-->
+<!--                            <img th:src="${game}" class="fruit-icon&#45;&#45;nav"> Jouer-->
+<!--                        </a>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:if="${session.user == null}">-->
+<!--                        <a th:href="@{/scoreboard}" class="btn btn-outline-fruit btn-lg px-4">-->
+<!--                            <img th:src="${trophy}" class="fruit-icon&#45;&#45;nav"> Classement-->
+<!--                        </a>-->
+<!--                    </th:block>-->
                 </div>
 
             </div>

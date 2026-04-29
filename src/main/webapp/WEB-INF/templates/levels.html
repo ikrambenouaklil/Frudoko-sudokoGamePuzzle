@@ -188,7 +188,7 @@
                     try {
                         // Update username + email
                         const params = new URLSearchParams({username, email});
-                        const r1 = await fetch(BASE_URL+'/profile/update', {method:'POST', body: params,
+                        const r1 = await fetch('/profile/update', {method:'POST', body: params,
                             headers:{'Content-Type':'application/x-www-form-urlencoded'}});
                         const d1 = await r1.json();
 
@@ -199,7 +199,7 @@
 
                         // Change password if provided
                         if (password) {
-                            const r2 = await fetch(BASE_URL + '/profile/password', {method:'POST',
+                            const r2 = await fetch('/profile/password', {method:'POST',
                                 body: new URLSearchParams({password}),
                                 headers:{'Content-Type':'application/x-www-form-urlencoded'}});
                             const d2 = await r2.json();

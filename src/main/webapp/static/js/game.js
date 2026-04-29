@@ -457,7 +457,7 @@ function checkWin() {
     // نوقف العداد قبل ما نتحقق (لا نضيف وقت أثناء التحقق)
     stopTimer();
 
-    fetch(BASE_URL + '/game/check', {
+    fetch( '/game/check', {
         method:  'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body:    new URLSearchParams({

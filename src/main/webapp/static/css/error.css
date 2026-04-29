@@ -1,0 +1,132 @@
+/* ── Error page shared ─────────────────────── */
+.error-page {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Orbiting fruits */
+.orbit-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: 32px;
+}
+.orbit-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.1);
+    animation: spinRing 12s linear infinite;
+}
+.orbit-ring-2 {
+    inset: 30px;
+    border-color: rgba(255,200,50,0.12);
+    animation: spinRing 8s linear infinite reverse;
+}
+@keyframes spinRing {
+    to { transform: rotate(360deg); }
+}
+
+/* big question mark in center */
+.orbit-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error-big-code {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5.5rem;
+    background: linear-gradient(135deg, #f1c40f, #e67e22, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    animation: codePulse 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(241,196,15,0.3));
+}
+@keyframes codePulse {
+    0%,100% { filter: drop-shadow(0 0 12px rgba(241,196,15,0.2)); }
+    50%     { filter: drop-shadow(0 0 32px rgba(241,196,15,0.5)); }
+}
+
+/* Fruits on orbit path */
+.orbit-fruit {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+}
+.orbit-fruit img { width: 44px; animation: counterSpin 12s linear infinite; }
+.of1 { transform: rotate(0deg)   translate(130px, -22px); }
+.of2 { transform: rotate(90deg)  translate(130px, -22px); }
+.of3 { transform: rotate(180deg) translate(130px, -22px); }
+.of4 { transform: rotate(270deg) translate(130px, -22px); }
+@keyframes counterSpin {
+    to { transform: rotate(-360deg); }
+}
+/* outer ring fruits */
+.orbit-fruit-outer img { width: 32px; animation: counterSpinSlow 8s linear infinite reverse; }
+.orbit-fruit-outer { position: absolute; top:50%; left:50%; transform-origin:0 0; }
+.ofo1 { transform: rotate(45deg)  translate(95px,-16px); }
+.ofo2 { transform: rotate(225deg) translate(95px,-16px); }
+
+/* Error text */
+.error-headline {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: #fff;
+    margin-bottom: 12px;
+}
+.error-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 380px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+.error-desc em {
+    color: var(--fruit-yellow);
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* Actions */
+.error-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* scattered mini fruits in background */
+.bg-fruit {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.05;
+    animation: floatDrift linear infinite;
+}
+@keyframes floatDrift {
+    0%   { transform: translateY(0)   rotate(0deg); }
+    100% { transform: translateY(-80px) rotate(20deg); opacity: 0; }
+}
+
+@media (max-width: 480px) {
+    .orbit-container { width: 220px; height: 220px; }
+    .of1 { transform: rotate(0deg)   translate(100px,-20px); }
+    .of2 { transform: rotate(90deg)  translate(100px,-20px); }
+    .of3 { transform: rotate(180deg) translate(100px,-20px); }
+    .of4 { transform: rotate(270deg) translate(100px,-20px); }    .orbit-fruit img { width: 36px; }
+    .error-big-code { font-size: 4rem; }
+    .ofo1,.ofo2 { display: none; }
+}

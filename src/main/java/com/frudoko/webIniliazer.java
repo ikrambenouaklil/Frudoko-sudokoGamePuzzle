@@ -22,4 +22,5 @@ public class webIniliazer extends AbstractAnnotationConfigDispatcherServletIniti
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+    
 }

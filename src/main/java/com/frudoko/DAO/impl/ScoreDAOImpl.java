@@ -37,20 +37,7 @@ public class ScoreDAOImpl  implements ScoreDAO {
         return result.intValue();
     }
 
-    @Override
-    public List<Score> findTopScores(int limit) {
-        String jpql = """
-        SELECT s FROM Score s
-        WHERE s.points = (
-            SELECT MAX(s2.points) FROM Score s2
-            WHERE s2.user = s.user AND s2.level = s.level
-        )
-        ORDER BY s.points DESC
-        """;
-        return em.createQuery(jpql, Score.class)
-                .setMaxResults(limit)
-                .getResultList();
-    }
+
 
     @Override
     public List<Score> findTopScoresByLevel(String level, int limit) {
@@ -66,7 +53,8 @@ public class ScoreDAOImpl  implements ScoreDAO {
             WHERE s3.user = s.user AND s3.level = :level
         )
     )
-    ORDER BY s.points DESC, s.timeTaken ASC
+    ORDER BY s.points DESC, s.timeInSeconds ASC
+  
     """;
         return em.createQuery(jpql, Score.class)
                 .setParameter("level", level)

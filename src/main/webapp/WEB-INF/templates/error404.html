@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>404 — Page introuvable · Frudoko</title>
+    <link rel="stylesheet" th:href="@{/css/error.css}"/>
+</head>
+<body>
+<main layout:fragment="content">
+    <th:block th:replace="~{fragments/variables :: vars(~{::section})}">
+        <section class="fruit-bg">
+
+            <!-- Navbar -->
+            <nav class="game-nav">
+                <a th:href="@{/home}" class="nav-brand">
+                    <img th:src="${apple}" style="width:32px;"> Frudoko
+                </a>
+                <div class="nav-actions">
+<!--                    <th:block th:if="${session.user != null}">-->
+<!--                        <span class="score-badge">-->
+<!--                            <img th:src="${medal}" class="fruit-icon&#45;&#45;nav">-->
+<!--                            <span th:text="${score}">0</span> pts-->
+<!--                        </span>-->
+<!--                        <a th:href="@{/levels}" class="btn-nav">-->
+<!--                            <img th:src="${game}" class="fruit-icon&#45;&#45;nav"> Jouer-->
+<!--                        </a>-->
+<!--                        <a th:href="@{/logout}" class="btn-nav btn-nav-danger">Déconnexion</a>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:if="${session.user == null}">-->
+<!--                        <a th:href="@{/login}"    class="btn-nav">Se connecter</a>-->
+<!--                        <a th:href="@{/register}" class="btn-nav">S'inscrire</a>-->
+<!--                    </th:block>-->
+                </div>
+            </nav>
+
+            <!-- bg scattered fruits -->
+            <img th:src="${apple}"  class="bg-fruit" style="width:90px;top:10%;left:5%;animation-duration:14s;animation-delay:0s;">
+            <img th:src="${banana}" class="bg-fruit" style="width:70px;top:60%;left:90%;animation-duration:18s;animation-delay:3s;">
+            <img th:src="${grape}"  class="bg-fruit" style="width:80px;top:80%;left:8%;animation-duration:12s;animation-delay:1s;">
+            <img th:src="${orange}" class="bg-fruit" style="width:60px;top:20%;left:85%;animation-duration:16s;animation-delay:5s;">
+
+            <div class="error-page">
+
+                <!-- Orbit animation -->
+                <div class="orbit-container">
+                    <div class="orbit-ring"></div>
+                    <div class="orbit-ring orbit-ring-2"></div>
+
+                    <!-- 4 outer fruits spinning -->
+                    <div class="orbit-fruit of1" style="animation: spinRing 12s linear infinite;">
+                        <img th:src="${apple}" th:alt="apple">
+                    </div>
+                    <div class="orbit-fruit of2" style="animation: spinRing 12s linear infinite;">
+                        <img th:src="${banana}" th:alt="banana">
+                    </div>
+                    <div class="orbit-fruit of3" style="animation: spinRing 12s linear infinite;">
+                        <img th:src="${grape}" th:alt="grape">
+                    </div>
+                    <div class="orbit-fruit of4" style="animation: spinRing 12s linear infinite;">
+                        <img th:src="${orange}" th:alt="orange">
+                    </div>
+
+                    <!-- 2 inner fruits -->
+                    <div class="orbit-fruit-outer ofo1">
+                        <img th:src="${apple}" th:alt="apple">
+                    </div>
+                    <div class="orbit-fruit-outer ofo2">
+                        <img th:src="${grape}" th:alt="grape">
+                    </div>
+
+                    <!-- Center code -->
+                    <div class="orbit-center">
+                        <span class="error-big-code">404</span>
+                    </div>
+                </div>
+
+                <h1 class="error-headline">Les fruits prennent une pause 🍓</h1>
+                <p class="error-desc">
+                    Frudoko est en cours d'amélioration 🍃<br>
+                    Nos petits fruits travaillent en coulisses pour une meilleure expérience !<br><br>
+                    On revient très vite… restez dans le coin 😉
+                </p>
+
+                <div class="error-actions">
+                    <a th:href="@{/home}" class="btn btn-fruit btn-lg px-5">
+                        <img th:src="${apple}" class="fruit-icon--nav"> Retour à l'accueil
+                    </a>
+                    <th:block th:if="${session.user != null}">
+                        <a th:href="@{/levels}" class="btn btn-outline-fruit btn-lg px-4">
+                            <img th:src="${game}" class="fruit-icon--nav"> Jouer
+                        </a>
+                    </th:block>
+                    <th:block th:if="${session.user == null}">
+                        <a th:href="@{/scoreboard}" class="btn btn-outline-fruit btn-lg px-4">
+                            <img th:src="${trophy}" class="fruit-icon--nav"> Classement
+                        </a>
+                    </th:block>
+                </div>
+
+            </div>
+        </section>
+    </th:block>
+</main>
+</body>
+</html>

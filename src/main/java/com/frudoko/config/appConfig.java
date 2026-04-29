@@ -78,9 +78,30 @@ public class appConfig implements WebMvcConfigurer {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://localhost:5432/frudokoDB");
-        ds.setUsername("postgres");
-        ds.setPassword("260802");
+
+        // Railway يعطي DATABASE_URL بهذا الشكل تلقائياً:
+        // postgresql://user:password@host:port/dbname
+        String rawUrl = System.getenv("DATABASE_URL");
+
+        if (rawUrl != null && rawUrl.startsWith("postgresql://")) {
+            // نحوّلها لصيغة JDBC
+            String withoutPrefix = rawUrl.replace("postgresql://", "");
+            String[] userAndRest = withoutPrefix.split("@");
+            String[] userPass = userAndRest[0].split(":");
+            String[] hostDb = userAndRest[1].split("/");
+            String[] hostPort = hostDb[0].split(":");
+
+            String jdbcUrl = "jdbc:postgresql://" + hostDb[0] + "/" + hostDb[1];
+            ds.setUrl(jdbcUrl);
+            ds.setUsername(userPass[0]);
+            ds.setPassword(userPass[1]);
+        } else {
+            // للتطوير المحلي — يبقى كما هو
+            ds.setUrl("jdbc:postgresql://localhost:5432/frudokoDB");
+            ds.setUsername("postgres");
+            ds.setPassword("260802");
+        }
+
         return ds;
     }
     @Bean

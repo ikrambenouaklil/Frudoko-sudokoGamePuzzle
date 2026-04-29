@@ -1,1 +1,1 @@
-web: java -jar target/FrudokoGame-jar-with-dependencies.jar
+web: java -cp target/FrudokoGame/WEB-INF/lib/*:target/FrudokoGame/WEB-INF/classes com.frudoko.Main

@@ -918,3 +918,27 @@ body.fruit-bg.d-flex {
 
 /* ── Nav toggle button: hidden on desktop ─────────────────────── */
 .nav-toggle { display: none; }
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: auto;
+        padding: 30px 16px;
+    }
+    .fruit-title {
+        font-size: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+    .fruit-icon--title {
+        width: 36px;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .preview-grid {
+        grid-template-columns: repeat(4, 44px);
+        grid-template-rows: repeat(4, 44px);
+    }
+}

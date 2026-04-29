@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f29504a1-c32c-4d40-a9bc-b2e244eb641a" name="Changes" comment="first commit" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="ikramV" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ikrambenouaklil&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ikrambenouaklil/FrudokoGame&quot;,
+    &quot;accountId&quot;: &quot;71b0c14f-5d11-4d39-bf26-146c43abec04&quot;
+  }
+}</component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3CapW3vUjgxp2yg1CDep2wFQvEV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Smart Tomcat.Tomcat: FrudokoGame.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/thinkpad/Desktop/jee/FrudokoGame/src/main/webapp/static/images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.frudoko.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp\static\images" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp\static\css\trash" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp\static\css\pages" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp\static\css\components" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\resources" />
+      <recent name="C:\Users\thinkpad\Desktop\jee\FrudokoGame\src\main\webapp\static\images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.frudoko.controllers" />
+      <recent name="com.frudoko.service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="com.dev.idea.plugins.tomcat" factoryName="DevTomcatLocal" httpPort="8080" shutdownPort="8005" httpsPort="8443" httpsEnabled="false" jmxPort="1099" jmxEnabled="false" ajpPort="8009" ajpEnabled="false" contextPath="/" serverMode="Local" catalinaBase="" vmOptions="" passParentEnvs="true" browserUrl="" afterLaunchEnabled="true" withJsDebugger="false" browser="System Default" hotDeploymentEnabled="true" updateClassesAndResources="true" preserveSessions="false" onUpdate="update_classes_and_resources" onFrameDeactivation="do_nothing" showUpdateDialog="true" showFrameDeactivationDialog="true" activateToolWindow="true" jreSelection="Project default" allowMultipleInstances="false" storeAsProjectFile="false" debugPort="5005" debugTransport="Socket" useModuleClasspath="false" managerUrl="http://localhost:8080/manager" remoteUsername="admin" remotePassword="" useRemoteCredentials="false" docBase="" logsSeeded="true">
+      <log_file checked="false" alias="Tomcat Catalina Out" path="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.1/devtomcat/Frudoko-sudokoGamePuzzle_90bb77b6_4e56a61d/Tomcat_95a65164/logs/catalina.out" />
+      <log_file alias="Tomcat Catalina Log" path="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.1/devtomcat/Frudoko-sudokoGamePuzzle_90bb77b6_4e56a61d/Tomcat_95a65164/logs/catalina.2026-04-29.log" />
+      <log_file alias="Tomcat Localhost Log" path="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.1/devtomcat/Frudoko-sudokoGamePuzzle_90bb77b6_4e56a61d/Tomcat_95a65164/logs/localhost.2026-04-29.log" />
+      <log_file checked="false" alias="Tomcat Access Log" path="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.1/devtomcat/Frudoko-sudokoGamePuzzle_90bb77b6_4e56a61d/Tomcat_95a65164/logs/localhost_access_log.2026-04-29.txt" />
+      <log_file checked="false" alias="Tomcat Manager Log" path="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.1/devtomcat/Frudoko-sudokoGamePuzzle_90bb77b6_4e56a61d/Tomcat_95a65164/logs/manager.2026-04-29.log" />
+      <log_file checked="false" alias="Tomcat Host Manager Log" path="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.1/devtomcat/Frudoko-sudokoGamePuzzle_90bb77b6_4e56a61d/Tomcat_95a65164/logs/host-manager.2026-04-29.log" />
+      <RunnerSettings RunnerId="Run" useDefaultStartup="true" startupScript="" useDefaultShutdown="true" shutdownScript="" passParentEnvs="true" debugHost="localhost" debugPort_runner="5005" />
+      <tomcatInfo name="Tomcat" version="9.0.116.0" path="C:\apache-tomcat-9.0.116\apache-tomcat-9.0.116" id="3b329340-dbb3-4d63-b493-ed182f6270ec" />
+      <RunnerSettings RunnerId="Run" />
+      <method v="2">
+        <option name="DevTomcat.BuildArtifacts" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat: FrudokoGame" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\apache-tomcat-9.0.116\apache-tomcat-9.0.116" />
+      <option name="contextPath" value="/FrudokoGame" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="port" value="9094" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.116" />
+          <option name="path" value="$PROJECT_DIR$/../../../../../apache-tomcat-9.0.116/apache-tomcat-9.0.116" />
+          <option name="version" value="9.0.116.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f29504a1-c32c-4d40-a9bc-b2e244eb641a" name="Changes" comment="" />
+      <created>1776633566627</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776633566627</updated>
+    </task>
+    <task id="LOCAL-00001" summary="first">
+      <option name="closed" value="true" />
+      <created>1776635342986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776635342986</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first">
+      <option name="closed" value="true" />
+      <created>1776635381584</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776635381584</updated>
+    </task>
+    <task id="LOCAL-00003" summary="first">
+      <option name="closed" value="true" />
+      <created>1776635517753</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776635517753</updated>
+    </task>
+    <task id="LOCAL-00004" summary="first2">
+      <option name="closed" value="true" />
+      <created>1776635575357</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1776635575358</updated>
+    </task>
+    <task id="LOCAL-00005" summary="first2">
+      <option name="closed" value="true" />
+      <created>1776635608224</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1776635608224</updated>
+    </task>
+    <task id="LOCAL-00006" summary="login &#10;home &#10;animation">
+      <option name="closed" value="true" />
+      <created>1776647185300</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1776647185300</updated>
+    </task>
+    <task id="LOCAL-00007" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776744135150</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1776744135150</updated>
+    </task>
+    <task id="LOCAL-00008" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776744160200</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1776744160200</updated>
+    </task>
+    <task id="LOCAL-00009" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776786224016</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1776786224017</updated>
+    </task>
+    <task id="LOCAL-00010" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776787253625</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776787253625</updated>
+    </task>
+    <task id="LOCAL-00011" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776796170981</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1776796170981</updated>
+    </task>
+    <task id="LOCAL-00012" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776816613642</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1776816613642</updated>
+    </task>
+    <task id="LOCAL-00013" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1776818014504</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1776818014504</updated>
+    </task>
+    <task id="LOCAL-00014" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1777059340983</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1777059340983</updated>
+    </task>
+    <task id="LOCAL-00015" summary="service + game generator">
+      <option name="closed" value="true" />
+      <created>1777324026253</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1777324026253</updated>
+    </task>
+    <task id="LOCAL-00016" summary="semi final">
+      <option name="closed" value="true" />
+      <created>1777425346595</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1777425346595</updated>
+    </task>
+    <task id="LOCAL-00017" summary="semi final">
+      <option name="closed" value="true" />
+      <created>1777425369200</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1777425369200</updated>
+    </task>
+    <task id="LOCAL-00018" summary="semi final scoreboard">
+      <option name="closed" value="true" />
+      <created>1777426168328</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1777426168328</updated>
+    </task>
+    <task id="LOCAL-00019" summary="semi final scoreboard">
+      <option name="closed" value="true" />
+      <created>1777426636606</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1777426636606</updated>
+    </task>
+    <task id="LOCAL-00020" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1777429916424</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1777429916424</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first" />
+    <MESSAGE value="first2" />
+    <MESSAGE value="login &#10;home &#10;animation" />
+    <MESSAGE value="service + game generator" />
+    <MESSAGE value="semi final" />
+    <MESSAGE value="semi final scoreboard" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="com.poratu.idea.plugins.tomcat">
+        <watch expression="url(" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

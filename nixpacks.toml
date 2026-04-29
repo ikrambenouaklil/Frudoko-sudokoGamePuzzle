@@ -2,4 +2,4 @@
 cmds = ["mvn clean package -DskipTests"]
 
 [start]
-cmd = "java -jar target/*.jar"
+cmd = "java -jar target/*.jar --server.port=$PORT"

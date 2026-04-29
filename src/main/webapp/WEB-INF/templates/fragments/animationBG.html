@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>animationBG</title>
+    <link rel="stylesheet" th:href="@{/css/frudoko.css}"/>
+</head>
+
+<body>
+<div th:fragment="animation">
+    <div class="particles" aria-hidden="true">
+        <span></span>
+        <span><img th:src="@{/images/apple.png}"  class="fruit-icon"></span>
+        <span><img th:src="@{/images/grape.png}"  class="fruit-icon"></span>
+        <span><img th:src="@{/images/apple.png}" class="fruit-icon"></span>
+        <span><img th:src="@{/images/banana.png}" class="fruit-icon"></span>
+
+        <span><img th:src="@{/images/apple.png}"  class="fruit-icon"></span>
+        <span><img th:src="@{/images/grape.png}"  class="fruit-icon"></span>
+        <span><img th:src="@{/images/orange.png}" class="fruit-icon"></span>
+        <span><img th:src="@{/images/banana.png}" class="fruit-icon"></span>
+
+        <span><img th:src="@{/images/apple.png}"  class="fruit-icon"></span>
+        <span><img th:src="@{/images/grape.png}"  class="fruit-icon"></span>
+        <span><img th:src="@{/images/orange.png}" class="fruit-icon"></span>
+        <span><img th:src="@{/images/banana.png}" class="fruit-icon"></span>
+    </div>
+</div>
+</body>
+</html>

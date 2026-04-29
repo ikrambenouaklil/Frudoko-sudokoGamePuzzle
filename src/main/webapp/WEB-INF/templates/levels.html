@@ -18,6 +18,7 @@
                 <a th:href="@{/home}"  class="nav-brand">
                     <img th:src="${apple}" style="width: 32px;">
                     Frudoko</a>
+                <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
                 <div class="nav-actions">
                     <span class="score-badge">
                 <img th:src="${medal}" class="fruit-icon--nav">

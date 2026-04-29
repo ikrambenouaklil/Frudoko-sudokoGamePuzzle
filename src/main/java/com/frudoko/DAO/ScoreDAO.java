@@ -9,7 +9,7 @@ public interface ScoreDAO  {
     void save(Score score);
     List<Score> findByUserId(int userId);
     int sumPointsByUserId(int userId);
-    List<Score> findTopScores(int limit);
+
 
     List<Score> findTopScoresByLevel(String level, int limit);
 }

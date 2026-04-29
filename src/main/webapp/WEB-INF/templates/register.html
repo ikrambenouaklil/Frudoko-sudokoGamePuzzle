@@ -105,17 +105,7 @@
         </section>
     </th:block>
     <script>
-        function validateForm() {
-            const pwd = document.getElementById('passwordInput').value;
-            if (pwd.length < 6) {
-                const text = document.getElementById('strengthText');
-                text.textContent = '⚠️ Le mot de passe doit contenir au moins 6 caractères.';
-                text.style.color = '#e74c3c';
-                document.getElementById('passwordInput').focus();
-                return false; // يمنع الإرسال
-            }
-            return true; // يسمح بالإرسال
-        }
+        
         function togglePassword(inputId) {
             const input = document.getElementById(inputId);
             const icon = document.getElementById("eyeIcon");

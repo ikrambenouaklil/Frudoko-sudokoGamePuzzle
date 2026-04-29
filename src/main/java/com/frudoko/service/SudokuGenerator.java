@@ -63,16 +63,7 @@ public class SudokuGenerator {
         return puzzle;
     }
 
-    /**
-     * Check if the player's current grid matches the solution exactly.
-     */
-    public boolean isSolved(int[][] current, int[][] solution) {
-        for (int r = 0; r < SIZE; r++)
-            for (int c = 0; c < SIZE; c++)
-                if (current[r][c] != solution[r][c]) return false;
-        return true;
-    }
-
+  
     /**
      * Validate whether a value at (row, col) breaks any Sudoku rule.
      * Used by the front-end check to highlight errors.
@@ -104,6 +95,36 @@ public class SudokuGenerator {
             }
         }
         return true; // all cells filled
+    }
+    public boolean isValidSolution(int[][] grid) {
+        Set<Integer> expected = Set.of(1, 2, 3, 4);
+
+        // كل صف
+        for (int r = 0; r < SIZE; r++) {
+            Set<Integer> row = new HashSet<>();
+            for (int c = 0; c < SIZE; c++) row.add(grid[r][c]);
+            if (!row.equals(expected)) return false;
+        }
+
+        // كل عمود
+        for (int c = 0; c < SIZE; c++) {
+            Set<Integer> col = new HashSet<>();
+            for (int r = 0; r < SIZE; r++) col.add(grid[r][c]);
+            if (!col.equals(expected)) return false;
+        }
+
+        // كل مربع 2×2
+        for (int br = 0; br < SIZE; br += 2) {
+            for (int bc = 0; bc < SIZE; bc += 2) {
+                Set<Integer> box = new HashSet<>();
+                for (int r = br; r < br + 2; r++)
+                    for (int c = bc; c < bc + 2; c++)
+                        box.add(grid[r][c]);
+                if (!box.equals(expected)) return false;
+            }
+        }
+
+        return true;
     }
 
     private boolean isValidPlacement(int[][] grid, int row, int col, int num) {

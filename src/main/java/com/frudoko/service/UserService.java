@@ -9,4 +9,8 @@ public interface UserService {
     ServiceResult<Void> delete(int id);
     ServiceResult<User> getById(int id);
     boolean existsByUserName(String userName);
+
+    boolean existsByEmail(String email);
+    ServiceResult<Void> changePassword(int userId, String newPassword);
+    ServiceResult<User> edit(User user);
 }

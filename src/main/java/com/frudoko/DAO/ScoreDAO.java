@@ -11,4 +11,5 @@ public interface ScoreDAO  {
     int sumPointsByUserId(int userId);
     List<Score> findTopScores(int limit);
 
+    List<Score> findTopScoresByLevel(String level, int limit);
 }

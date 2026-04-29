@@ -61,6 +61,16 @@ public class UserDAOImpl implements UserDAO {
         
         return em.find(User.class, id);
     }
-
+    @Override
+    public User findByEmailOrUserName(String identifier) {
+        return em.createQuery("""
+        SELECT u FROM User u
+        WHERE u.email = :id OR u.userName = :id
+    """, User.class)
+                .setParameter("id", identifier)
+                .getResultStream()
+                .findFirst()
+                .orElse(null);
+    }
 
 }

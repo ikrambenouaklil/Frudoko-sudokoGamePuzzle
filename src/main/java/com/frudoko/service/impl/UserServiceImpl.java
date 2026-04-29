@@ -1,3 +1,4 @@
+
 package com.frudoko.service.impl;
 
 import com.frudoko.DAO.UserDAO;
@@ -45,16 +46,62 @@ public class UserServiceImpl implements UserService {
 
     // ---------------- LOGIN ----------------
     @Override
-    public ServiceResult<User> login(String email, String password) {
-
+    public ServiceResult<User> login(String identifier, String password) {
         try {
-            User user = userDAO.findByEmail(email);
+
+            User user = userDAO.findByEmailOrUserName(identifier);
 
             if (user == null || !bCrypt.matches(password, user.getPassword())) {
                 return new ServiceResult<>(false, "Invalid credentials");
             }
 
             return new ServiceResult<>(true, "Login successful", user);
+
+        } catch (Exception e) {
+            return error();
+        }
+    }
+
+    // ---------------- CHANGE PASSWORD ----------------
+    @Override
+    public ServiceResult <Void> changePassword(int userId, String newPassword) {
+        try {
+
+            User user = userDAO.findById(userId);
+
+            if (user == null) {
+                return new ServiceResult<>(false, "User not found");
+            }
+
+            // Hash password قبل الحفظ 🔐
+            user.setPassword(bCrypt.encode(newPassword));
+
+            userDAO.save(user); // merge
+
+            return new ServiceResult<>(true, "Password updated");
+
+        } catch (Exception e) {
+            return error();
+        }
+    }
+
+    // ---------------- EDIT PROFILE ----------------
+    @Override
+    public ServiceResult<User> edit(User updatedUser) {
+        try {
+
+            User user = userDAO.findById(updatedUser.getId());
+
+            if (user == null) {
+                return new ServiceResult<>(false, "User not found");
+            }
+
+            user.setUserName(updatedUser.getUserName());
+            user.setEmail(updatedUser.getEmail());
+
+            userDAO.save(user);
+
+            return new ServiceResult<>(true, "Profile updated", user);
 
         } catch (Exception e) {
             return error();
@@ -99,9 +146,15 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    // ---------------- EXISTS USERNAME ----------------
+    // ---------------- EXISTS ----------------
+    @Override
     public boolean existsByUserName(String userName) {
         return userDAO.findByUserName(userName) != null;
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userDAO.findByEmail(email) != null;
     }
 
     // ---------------- HELPER ----------------
@@ -109,3 +162,4 @@ public class UserServiceImpl implements UserService {
         return new ServiceResult<>(false, "Server error");
     }
 }
+

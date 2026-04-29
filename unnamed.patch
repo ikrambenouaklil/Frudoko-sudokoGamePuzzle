@@ -1,0 +1,17 @@
+Index: src/main/webapp/WEB-INF/templates/fragments/navbar.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/templates/fragments/navbar.html b/src/main/webapp/WEB-INF/templates/fragments/navbar.html
+--- a/src/main/webapp/WEB-INF/templates/fragments/navbar.html
++++ b/src/main/webapp/WEB-INF/templates/fragments/navbar.html
+@@ -11,7 +11,7 @@
+      th:if="${session.user != null}">
+ 
+     <a th:href="@{/home}" class="nav-brand">
+-        <img th:src="${apple}"
++        <img th:src="${apple}">
+         Frudoko
+ 
+     </a>

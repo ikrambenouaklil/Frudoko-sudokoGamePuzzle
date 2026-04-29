@@ -39,8 +39,31 @@ public class ScoreDAOImpl  implements ScoreDAO {
 
     @Override
     public List<Score> findTopScores(int limit) {
-        String jpql = "SELECT s FROM Score s ORDER BY s.points DESC";
+        String jpql = """
+        SELECT s FROM Score s
+        WHERE s.points = (
+            SELECT MAX(s2.points) FROM Score s2
+            WHERE s2.user = s.user AND s2.level = s.level
+        )
+        ORDER BY s.points DESC
+        """;
         return em.createQuery(jpql, Score.class)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+    @Override
+    public List<Score> findTopScoresByLevel(String level, int limit) {
+        String jpql = """
+        SELECT s FROM Score s
+        WHERE s.level = :level
+        AND s.points = (
+            SELECT MAX(s2.points) FROM Score s2
+            WHERE s2.user = s.user AND s2.level = :level
+        )
+        ORDER BY s.points DESC
+        """;
+        return em.createQuery(jpql, Score.class)
+                .setParameter("level", level)
                 .setMaxResults(limit)
                 .getResultList();
     }

@@ -2,10 +2,13 @@ package com.frudoko.DAO.impl;
 
 import com.frudoko.DAO.GameStateDAO;
 import com.frudoko.model.GameState;
+import com.frudoko.model.Score;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
+
 @Repository
 public class GameStateDAOImpl implements GameStateDAO {
 
@@ -46,4 +49,5 @@ public class GameStateDAOImpl implements GameStateDAO {
 
 
     }
+  
 }

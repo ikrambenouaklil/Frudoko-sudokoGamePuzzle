@@ -1,11 +1,9 @@
 package com.frudoko.errors;
 
 
-import com.frudoko.model.User;
-
 public class ServiceResult <T>{
 
-    private T item ;
+    private T data ;
     private boolean success;
     private String message;
 
@@ -13,20 +11,20 @@ public class ServiceResult <T>{
         this.success = success;
         this.message = message;
     }
-    public ServiceResult( boolean success , String message , T item) {
+    public ServiceResult( boolean success , String message , T data) {
        this.success= success;
-        this.item = item;
+        this.data = data;
         this.message = message;
     }
 // constructor + getters
 
 
-    public T getItem() {
-        return item;
+    public T getData() {
+        return data;
     }
 
     public void setItem(T item) {
-        this.item = item;
+        this.data = data;
     }
 
     public boolean isSuccess() {

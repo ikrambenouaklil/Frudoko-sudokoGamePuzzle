@@ -427,7 +427,7 @@ function triggerSave(synchronous = false) {
     // keepalive يسمح للطلب يكمل حتى بعد ما تغلق الصفحة
     if (synchronous) fetchOptions.keepalive = true;
 
-    fetch(BASE_URL + 'game/save', fetchOptions)
+    fetch(BASE_URL + '/game/save', fetchOptions)
         .catch(() => { /* نتجاهل الفشل — اللعبة تكمل بدون نت */ })
         .finally(() => { isSaving = false; }); // نحرر الـ flag
 }
@@ -457,7 +457,7 @@ function checkWin() {
     // نوقف العداد قبل ما نتحقق (لا نضيف وقت أثناء التحقق)
     stopTimer();
 
-    fetch(BASE_URL + 'game/check', {
+    fetch(BASE_URL + '/game/check', {
         method:  'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body:    new URLSearchParams({

@@ -13,9 +13,9 @@ public class Main {
         tomcat.setPort(Integer.parseInt(port));
         tomcat.getConnector();
 
-        // على Railway الكود في /app/target/FrudokoGame
-        String webappPath = new File("target/FrudokoGame").getAbsolutePath();
-        Context ctx = tomcat.addWebapp("", webappPath);
+        // نشوف الـ WAR في نفس مكان الـ JAR
+        String warPath = new File("target/FrudokoGame.war").getAbsolutePath();
+        Context ctx = tomcat.addWebapp("", warPath);
 
         tomcat.start();
         tomcat.getServer().await();

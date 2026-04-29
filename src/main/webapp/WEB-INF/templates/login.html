@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Connexion — Frudoko</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" th:href="@{/css/frudoko.css}"/>
-    <link rel="stylesheet" th:href="@{/css/auth.css}"/>
-    <link rel="stylesheet" th:href="@{/fragments/animationBG}"/>
-    <link rel="icon" th:href="@{/images/apple.png}" type="image/png">
+
+
 
 </head>
+
 <body class="fruit-bg d-flex align-items-center justify-content-center" style="min-height:100vh">
 
-<!--bg animation-->
-<div th:replace="~{fragments/animationBG :: animation}"></div>
-<div class="auth-card">
+<main layout:fragment="content">
+
+    <th:block th:replace="~{fragments/variables :: vars(~{::section})}">
+ <section>
+    <div class="auth-card">
     <!-- Header -->
     <div class="text-center mb-4">
         <a th:href="@{/home}" class="text-decoration-none">
-            <span style="font-size:2.5rem">🍇</span>
+
+                <img th:src="${grape}" class="fruit-icon" >
+
         </a>
         <h3 class="mt-2 text-white fw-bold">Connexion</h3>
         <p class="text-white-50 small">Bienvenue sur Frudoko !</p>
@@ -31,13 +36,13 @@
     <form method="post"  th:action="@{/login}" novalidate>
 
         <div class="mb-3">
-            <label class="form-label text-white-50 small">Email</label>
-            <input type="email"
-                   name="email"
+            <label class="form-label text-white-50 small">Email or username</label>
+            <input type="text"
+                   name="identifier"
                    class="form-control auth-input"
-                   placeholder="votre@email.com"
+                   placeholder="Email or username"
                    required
-                   autocomplete="email"/>
+                   autocomplete="username"/>
         </div>
 
         <div class="mb-4">
@@ -52,8 +57,11 @@
                        autocomplete="current-password"/>
                 <button class="btn btn-outline-secondary"
                         type="button"
-                        onclick="togglePassword('passwordInput', this)"
-                        tabindex="-1">👁️</button>
+                        onclick="togglePassword(this)">
+                    <img th:src="${eyes}"
+                         th:attr="data-open=${eyes}, data-close=@{/images/close-eye.png}"
+                         style="width:25px;">
+                </button>
             </div>
         </div>
 
@@ -63,17 +71,31 @@
 
     </form>
 
-
+        <p class="text-center text-white-50 small mb-0">
+            Pas encore de compte ?
+            <a th:href="@{/register}" class="text-fruit">S'inscrire</a>
+        </p>
 
 </div>
-<script>
-    function togglePassword(inputId, btn) {
-        const input = document.getElementById(inputId);
-        input.type = input.type === 'password' ? 'text' : 'password';
-        btn.textContent = input.type === 'password' ? '👁️' : '🙈';
-    }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script>
+         function togglePassword(btn) {
+             const input = document.getElementById('passwordInput');
+             const icon = btn.querySelector('img');
 
+             if (input.type === 'password') {
+                 input.type = 'text';
+                 icon.src = icon.dataset.close;
+             } else {
+                 input.type = 'password';
+                 icon.src = icon.dataset.open;
+             }
+         }
+     </script>
+
+
+ </section>
+    </th:block>
+
+</main>
 </body>
 </html>

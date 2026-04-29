@@ -1,12 +1,362 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
 
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="icon" th:href="@{/images/apple.png}" type="image/png">
+  <title>Frudoko — Classement</title>
+  <style>
+    .tab-pane { display: none; }
+    .tab-pane.active {
+      display: block;
+      animation: fadeSlide 0.35s ease;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .tab-btn { background: rgba(255,255,255,0.08); border: 2px solid transparent;
+      border-radius: 12px; padding: 6px 14px; cursor: pointer; transition: .2s; }
+    .tab-btn.tab-active { background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.5); }
+    .no-podium-spacer { height: 16px; }
+  </style>
 </head>
 <body>
+
+<main layout:fragment="content">
+  <th:block th:replace="~{fragments/variables :: vars(~{::section})}">
+    <section class="fruit-bg">
+
+      <!-- Navbar -->
+      <nav class="game-nav">
+        <a th:href="@{/home}" class="nav-brand">
+          <img th:src="${apple}" style="width:32px;"> Frudoko</a>
+        <div class="nav-actions">
+          <th:block th:if="${session.user != null}">
+            <span class="score-badge">
+              <img th:src="${medal}" class="fruit-icon--nav">
+              <span th:text="${score}">0</span> pts</span>
+            <a th:href="@{/levels}" class="btn-nav"
+               style="display:inline-flex; align-items:center; gap:6px;">
+              <img th:src="${game}" class="fruit-icon--nav"> Jouer</a>
+            <a th:href="@{/logout}" class="btn-nav btn-nav-danger">Déconnexion</a>
+          </th:block>
+          <th:block th:if="${session.user == null}">
+            <a th:href="@{/login}"    class="btn-nav">Se connecter</a>
+            <a th:href="@{/register}" class="btn-nav">S'inscrire</a>
+          </th:block>
+        </div>
+      </nav>
+
+      <div class="container py-5">
+
+        <!-- Header -->
+        <div class="text-center mb-4">
+          <h1 class="text-white fw-bold" style="font-size:2.5rem">
+            <img th:src="${trophy}" style="width:40px;">
+            Classement Mondial</h1>
+          <p class="text-white-50">Les meilleurs joueurs Frudoko</p>
+        </div>
+
+
+        <!-- TABS SLIDER -->
+        <div class="tabs-wrapper">
+          <div class="tabs-track">
+            <div class="tabs-slider" id="tabsSlider"></div>
+            <button class="tab-pill active" id="btn-EASY"   onclick="switchTab('EASY',   0)">EASY</button>
+            <button class="tab-pill"        id="btn-MEDIUM" onclick="switchTab('MEDIUM', 1)">MEDIUM</button>
+            <button class="tab-pill"        id="btn-HARD"   onclick="switchTab('HARD',   2)">HARD</button>
+          </div>
+        </div>
+
+        <!-- ══ TAB EASY ══ -->
+        <div id="tab-EASY" class="tab-pane active">
+
+          <!-- Podium EASY -->
+          <th:block th:if="${not #lists.isEmpty(scoresEasy)}">
+            <div class="podium-row d-flex justify-content-center align-items-end gap-3 mb-4 flex-wrap">
+
+              <!-- 2nd -->
+              <div class="podium-step podium-2"
+                   th:if="${#lists.size(scoresEasy) >= 2}"
+                   th:with="s=${scoresEasy[1]}">
+                <img th:src="${place2nd}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p2-block">2</div>
+              </div>
+              <div class="podium-step podium-2"
+                   th:if="${#lists.size(scoresEasy) < 2}"
+                   style="visibility:hidden">
+                <div class="podium-block p2-block">2</div>
+              </div>
+
+              <!-- 1st -->
+              <div class="podium-step podium-1" th:with="s=${scoresEasy[0]}">
+                <img th:src="${crown}"    style="width:36px;">
+                <img th:src="${place1st}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p1-block">1</div>
+              </div>
+
+              <!-- 3rd -->
+              <div class="podium-step podium-3"
+                   th:if="${#lists.size(scoresEasy) >= 3}"
+                   th:with="s=${scoresEasy[2]}">
+                <img th:src="${place3rd}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p3-block">3</div>
+              </div>
+              <div class="podium-step podium-3"
+                   th:if="${#lists.size(scoresEasy) < 3}"
+                   style="visibility:hidden">
+                <div class="podium-block p3-block">3</div>
+              </div>
+
+            </div>
+          </th:block>
+          <!-- كي ما كانش scores — فراغ صغير بدل الـ podium -->
+          <div th:if="${#lists.isEmpty(scoresEasy)}" class="no-podium-spacer"></div>
+
+          <!-- Table EASY -->
+          <div class="scoreboard-card">
+            <table class="score-table w-100">
+              <thead><tr>
+                <th>#</th><th>Joueur</th><th>Score</th><th>Temps</th><th>Date</th>
+              </tr></thead>
+              <tbody>
+              <tr th:if="${#lists.isEmpty(scoresEasy)}">
+                <td colspan="5" class="text-center text-white-50 py-4">
+                  Aucun score encore ! 🎮
+                </td>
+              </tr>
+              <tr th:each="s, i : ${scoresEasy}"
+                  th:classappend="${i.index==0}?' row-gold':(${i.index==1}?' row-silver':(${i.index==2}?' row-bronze':''))">
+                <td class="rank-cell">
+                  <img th:if="${i.index==0}" th:src="${place1st}" style="width:24px;">
+                  <img th:if="${i.index==1}" th:src="${place2nd}" style="width:24px;">
+                  <img th:if="${i.index==2}" th:src="${place3rd}" style="width:24px;">
+                  <span th:if="${i.index>2}" th:text="${i.index+1}"></span>
+                </td>
+                <td class="player-cell" th:text="${s.user.userName}">—</td>
+                <td class="points-cell"><strong th:text="${s.points} + ' pts'">—</strong></td>
+                <td class="time-cell">
+                  <span th:text="${#numbers.formatInteger(s.timeInSeconds/60,2)}+':'+${#numbers.formatInteger(s.timeInSeconds%60,2)}">—</span>
+                </td>
+                <td class="date-cell" th:text="${#temporals.format(s.playedAt,'dd/MM/yyyy')}">—</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ══ TAB MEDIUM ══ -->
+        <div id="tab-MEDIUM" class="tab-pane">
+
+          <th:block th:if="${not #lists.isEmpty(scoresMedium)}">
+            <div class="podium-row d-flex justify-content-center align-items-end gap-3 mb-4 flex-wrap">
+
+              <div class="podium-step podium-2"
+                   th:if="${#lists.size(scoresMedium) >= 2}"
+                   th:with="s=${scoresMedium[1]}">
+                <img th:src="${place2nd}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p2-block">2</div>
+              </div>
+              <div class="podium-step podium-2"
+                   th:if="${#lists.size(scoresMedium) < 2}"
+                   style="visibility:hidden">
+                <div class="podium-block p2-block">2</div>
+              </div>
+
+              <div class="podium-step podium-1" th:with="s=${scoresMedium[0]}">
+                <img th:src="${crown}"    style="width:36px;">
+                <img th:src="${place1st}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p1-block">1</div>
+              </div>
+
+              <div class="podium-step podium-3"
+                   th:if="${#lists.size(scoresMedium) >= 3}"
+                   th:with="s=${scoresMedium[2]}">
+                <img th:src="${place3rd}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p3-block">3</div>
+              </div>
+              <div class="podium-step podium-3"
+                   th:if="${#lists.size(scoresMedium) < 3}"
+                   style="visibility:hidden">
+                <div class="podium-block p3-block">3</div>
+              </div>
+
+            </div>
+          </th:block>
+          <div th:if="${#lists.isEmpty(scoresMedium)}" class="no-podium-spacer"></div>
+
+          <div class="scoreboard-card">
+            <table class="score-table w-100">
+              <thead><tr>
+                <th>#</th><th>Joueur</th><th>Score</th><th>Temps</th><th>Date</th>
+              </tr></thead>
+              <tbody>
+              <tr th:if="${#lists.isEmpty(scoresMedium)}">
+                <td colspan="5" class="text-center text-white-50 py-4">Aucun score encore ! 🎮</td>
+              </tr>
+              <tr th:each="s, i : ${scoresMedium}"
+                  th:classappend="${i.index==0}?' row-gold':(${i.index==1}?' row-silver':(${i.index==2}?' row-bronze':''))">
+                <td class="rank-cell">
+                  <img th:if="${i.index==0}" th:src="${place1st}" style="width:24px;">
+                  <img th:if="${i.index==1}" th:src="${place2nd}" style="width:24px;">
+                  <img th:if="${i.index==2}" th:src="${place3rd}" style="width:24px;">
+                  <span th:if="${i.index>2}" th:text="${i.index+1}"></span>
+                </td>
+                <td class="player-cell" th:text="${s.user.userName}">—</td>
+                <td class="points-cell"><strong th:text="${s.points} + ' pts'">—</strong></td>
+                <td class="time-cell">
+                  <span th:text="${#numbers.formatInteger(s.timeInSeconds/60,2)}+':'+${#numbers.formatInteger(s.timeInSeconds%60,2)}">—</span>
+                </td>
+                <td class="date-cell" th:text="${#temporals.format(s.playedAt,'dd/MM/yyyy')}">—</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ══ TAB HARD ══ -->
+        <div id="tab-HARD" class="tab-pane">
+
+          <th:block th:if="${not #lists.isEmpty(scoresHard)}">
+            <div class="podium-row d-flex justify-content-center align-items-end gap-3 mb-4 flex-wrap">
+
+              <div class="podium-step podium-2"
+                   th:if="${#lists.size(scoresHard) >= 2}"
+                   th:with="s=${scoresHard[1]}">
+                <img th:src="${place2nd}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p2-block">2</div>
+              </div>
+              <div class="podium-step podium-2"
+                   th:if="${#lists.size(scoresHard) < 2}"
+                   style="visibility:hidden">
+                <div class="podium-block p2-block">2</div>
+              </div>
+
+              <div class="podium-step podium-1" th:with="s=${scoresHard[0]}">
+                <img th:src="${crown}"    style="width:36px;">
+                <img th:src="${place1st}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p1-block">1</div>
+              </div>
+
+              <div class="podium-step podium-3"
+                   th:if="${#lists.size(scoresHard) >= 3}"
+                   th:with="s=${scoresHard[2]}">
+                <img th:src="${place3rd}" style="width:40px;">
+                <div class="podium-name" th:text="${s.user.userName}">—</div>
+                <div class="podium-pts"  th:text="${s.points} + ' pts'">—</div>
+                <div class="podium-block p3-block">3</div>
+              </div>
+              <div class="podium-step podium-3"
+                   th:if="${#lists.size(scoresHard) < 3}"
+                   style="visibility:hidden">
+                <div class="podium-block p3-block">3</div>
+              </div>
+
+            </div>
+          </th:block>
+          <div th:if="${#lists.isEmpty(scoresHard)}" class="no-podium-spacer"></div>
+
+          <div class="scoreboard-card">
+            <table class="score-table w-100">
+              <thead><tr>
+                <th>#</th><th>Joueur</th><th>Score</th><th>Temps</th><th>Date</th>
+              </tr></thead>
+              <tbody>
+              <tr th:if="${#lists.isEmpty(scoresHard)}">
+                <td colspan="5" class="text-center text-white-50 py-4">Aucun score encore ! 🎮</td>
+              </tr>
+              <tr th:each="s, i : ${scoresHard}"
+                  th:classappend="${i.index==0}?' row-gold':(${i.index==1}?' row-silver':(${i.index==2}?' row-bronze':''))">
+                <td class="rank-cell">
+                  <img th:if="${i.index==0}" th:src="${place1st}" style="width:24px;">
+                  <img th:if="${i.index==1}" th:src="${place2nd}" style="width:24px;">
+                  <img th:if="${i.index==2}" th:src="${place3rd}" style="width:24px;">
+                  <span th:if="${i.index>2}" th:text="${i.index+1}"></span>
+                </td>
+                <td class="player-cell" th:text="${s.user.userName}">—</td>
+                <td class="points-cell"><strong th:text="${s.points} + ' pts'">—</strong></td>
+                <td class="time-cell">
+                  <span th:text="${#numbers.formatInteger(s.timeInSeconds/60,2)}+':'+${#numbers.formatInteger(s.timeInSeconds%60,2)}">—</span>
+                </td>
+                <td class="date-cell" th:text="${#temporals.format(s.playedAt,'dd/MM/yyyy')}">—</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-5">
+          <a th:href="@{/levels}" class="btn btn-fruit btn-lg px-5">
+            <img th:src="${game}" class="fruit-icon--nav"> Jouer maintenant
+          </a>
+        </div>
+
+      </div>
+      <script>
+        let currentTab = 0;
+
+        function switchTab(level, index) {
+          // حرك الـ slider
+          const slider = document.getElementById('tabsSlider');
+          slider.style.transform = `translateX(${index * 100}%)`;
+
+          // بدل الـ active class على الأزرار
+          document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
+          document.getElementById('btn-' + level).classList.add('active');
+
+          // animation تاع المحتوى — يتحرك يسار أو يمين
+          const direction = index > currentTab ? 1 : -1;
+          currentTab = index;
+
+          document.querySelectorAll('.tab-pane').forEach(p => {
+            p.classList.remove('active');
+            p.style.animation = 'none';
+          });
+
+          const active = document.getElementById('tab-' + level);
+          active.style.setProperty('--slide-from', `${direction * 40}px`);
+          active.classList.add('active');
+        }
+
+        // CSS ديناميكي للـ animation
+        const style = document.createElement('style');
+        style.textContent = `
+    .tab-pane { display: none; }
+    .tab-pane.active {
+      display: block;
+      animation: slideIn 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(var(--slide-from, 40px)); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+  `;
+        document.head.appendChild(style);
+      </script>
+
+    </section>
+  </th:block>
+</main>
 
 </body>
 </html>

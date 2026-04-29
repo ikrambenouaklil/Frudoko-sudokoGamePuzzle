@@ -1,12 +1,150 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Inscription — Frudoko</title>
+
     <link rel="icon" th:href="@{/images/apple.png}" type="image/png">
+    <th:block layout:fragment="extra-css">
+        <link rel="stylesheet" th:href="@{/css/frudoko.css}"/>
+    </th:block>
 </head>
-<body>
+<body >
+
+<main layout:fragment="content">
+
+    <th:block th:replace="~{fragments/variables :: vars(~{::section})}">
+        <section class="fruit-bg d-flex align-items-center justify-content-center" style="min-height:100vh">
+
+
+
+            <div class="auth-card">
+
+                <div class="text-center mb-4">
+                    <a th:href="@{/home}" class="text-decoration-none">
+                        <span style="font-size:2.5rem">
+                            <img th:src="${apple}" style="width:46px;">
+                        </span>
+                    </a>
+                    <h3 class="mt-2 text-white fw-bold">Créer un compte</h3>
+                    <p class="text-white-50 small">Rejoignez Frudoko !</p>
+                </div>
+
+                <div th:if="${error}" class="alert alert-danger text-center py-2 mb-3 small" th:text="${error}"></div>
+
+                <form method="post" th:action="@{/register}" novalidate>
+
+                    <div class="mb-3">
+                        <label class="form-label text-white-50 small">Nom d'utilisateur</label>
+                        <input type="text"
+                               name="username"
+                               class="form-control auth-input"
+                               placeholder="FruitMaster"
+                               required
+                               minlength="3"
+                               autocomplete="username"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-white-50 small">Email</label>
+                        <input type="email"
+                               name="email"
+                               class="form-control auth-input"
+                               placeholder="votre@email.com"
+                               required
+                               autocomplete="email"/>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-white-50 small">Mot de passe</label>
+                        <div class="input-group">
+                            <input type="password"
+                                   id="passwordInput"
+                                   name="password"
+                                   class="form-control auth-input"
+                                   placeholder="Au moins 6 caractères"
+                                   required
+                                   minlength="6"
+                                   autocomplete="new-password"
+                                   oninput="checkStrength(this.value)"/>
+                            <button class="btn btn-outline-secondary"
+                                    type="button"
+                                    onclick="togglePassword('passwordInput')"
+                                    tabindex="-1">
+                                <img id="eyeIcon"
+                                     th:src="${eyes}"
+                                     th:attr="data-open=${eyes}, data-close=@{/images/close-eye.png}"
+                                     style="width:25px;">
+                            </button>
+                        </div>
+                        <!-- Password strength indicator -->
+                        <div class="mt-2">
+                            <div id="strengthBar" class="strength-bar"></div>
+                            <small id="strengthText" class="text-white-50"></small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-fruit w-100 py-2 mb-3">
+                        Créer mon compte
+                        <img th:src="${sparkle}" style="width: 25px ; height:25px;">
+                    </button>
+
+                </form>
+
+                <p class="text-center text-white-50 small mb-0">
+                    Déjà inscrit ?
+                    <a th:href="@{/login}" class="text-fruit">Se connecter</a>
+                </p>
+
+            </div>
+
+
+        </section>
+    </th:block>
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById("eyeIcon");
+
+            const open = icon.dataset.open;
+            const close = icon.dataset.close;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.src = close;
+            } else {
+                input.type = 'password';
+                icon.src = open;
+            }
+        }
+        function checkStrength(pwd) {
+            const bar  = document.getElementById('strengthBar');
+            const text = document.getElementById('strengthText');
+            let score  = 0;
+            if (pwd.length >= 6)  score++;
+            if (pwd.length >= 10) score++;
+            if (/[A-Z]/.test(pwd)) score++;
+            if (/[0-9]/.test(pwd)) score++;
+            if (/[^A-Za-z0-9]/.test(pwd)) score++;
+
+            const levels = [
+                {color:'#e74c3c', label:'Très faible', width:'20%'},
+                {color:'#e67e22', label:'Faible',      width:'40%'},
+                {color:'#f1c40f', label:'Moyen',       width:'60%'},
+                {color:'#2ecc71', label:'Fort',        width:'80%'},
+                {color:'#27ae60', label:'Très fort',   width:'100%'},
+            ];
+            const lvl = levels[Math.min(score, 4)];
+            bar.style.width      = lvl.width;
+            bar.style.background = lvl.color;
+            text.textContent     = lvl.label;
+            text.style.color     = lvl.color;
+        }
+    </script>
+</main>
 
 </body>
 </html>

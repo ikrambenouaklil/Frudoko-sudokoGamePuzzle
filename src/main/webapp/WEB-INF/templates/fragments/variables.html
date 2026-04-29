@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="vars(content)"
+          th:with="
+            apple   = @{/images/apple.png},
+            banana  = @{/images/banana.png},
+            grape   = @{/images/grape.png},
+            orange  = @{/images/orange.png},
+            sparkle = @{/images/sparkle.png},
+            key     = @{/images/key.png},
+            trophy  = @{/images/trophy.png},
+            crown   = @{/images/crown.png},
+            save    = @{/images/save.png},
+            replay  = @{/images/replay.png},
+            trash   = @{/images/trash.png},
+            eyes    = @{/images/eyes.png},
+            closeEyes    = @{/images/close-eyes.png},
+            warning    = @{/images/warning.png},
+           place2nd = @{/images/2nd-place-medal.png},
+            place1st = @{/images/1st-place-medal.png},
+            place3rd = @{/images/3rd-place-medal-96.png},
+            profile    = @{/images/profile.png},
+            replay    = @{/images/replay.png},
+            time    = @{/images/time.png},
+            rules    = @{/images/rules.png},
+            game    = @{/images/game.png},
+            medal    = @{/images/medal.png},
+            game    = @{/images/game.png},
+            goal    = @{/images/goal.png},
+            pause    = @{/images/pause.png},
+            play    = @{/images/play.png},
+            leave    = @{/images/leave.png},
+            congrats    = @{/images/congrats.png},
+
+            danger    = @{/images/danger.png}
+
+
+          ">
+    <th:block th:replace="${content}"/>
+</th:block>
+
+</body>
+</html>

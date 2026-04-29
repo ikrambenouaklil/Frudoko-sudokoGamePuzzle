@@ -1,1 +1,1 @@
-web: java -jar target/FrudokoGame.jar
+web: java -jar target/FrudokoGame-1.0-SNAPSHOT-launcher.jar

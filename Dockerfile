@@ -2,10 +2,10 @@ FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean package -DskipTests && ls -la target/
+RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jre
-WORKDIR /app
-COPY --from=build /app/target/FrudokoGame.war ./target/FrudokoGame.war
+FROM tomcat:9.0-jdk17
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY --from=build /app/target/FrudokoGame.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
-CMD ["java", "--add-opens", "java.base/java.lang=ALL-UNNAMED", "-jar", "./target/FrudokoGame.war"]
+CMD ["catalina.sh", "run"]

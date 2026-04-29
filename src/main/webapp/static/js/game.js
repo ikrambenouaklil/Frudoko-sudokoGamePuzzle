@@ -163,7 +163,7 @@ function resumeGame() {
    NEW GAME
 ════════════════════════════════════════════════════════════════ */
 function newGame() {
-    fetch(BASE_URL + '/game/new', {
+    fetch('/game/new', {
         method:  'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body:    new URLSearchParams({ level: LEVEL }).toString()
@@ -427,7 +427,7 @@ function triggerSave(synchronous = false) {
     // keepalive يسمح للطلب يكمل حتى بعد ما تغلق الصفحة
     if (synchronous) fetchOptions.keepalive = true;
 
-    fetch(BASE_URL + '/game/save', fetchOptions)
+    fetch( '/game/save', fetchOptions)
         .catch(() => { /* نتجاهل الفشل — اللعبة تكمل بدون نت */ })
         .finally(() => { isSaving = false; }); // نحرر الـ flag
 }
